@@ -18,6 +18,7 @@
     <link rel="canonical" href="http://pennyattah.github.io/Lamine-Yamal-Fanbase/">
 </head>
   <body>
+    <button id="themeBtn" style="position:fixed;top:15px;right:15px;z-index:1000;padding:10px;border-radius:50%;border:none;cursor:pointer;font-size:18px;">🌙</button>
     <div class="noise"></div>
     <header class="nav">
       <a class="brand" href="#top"><span>LY</span><b>10</b></a>
@@ -143,5 +144,6 @@ From,
       <p id="mail-status" class="mail-status">If no email app opens, copy the letter and send it manually.</p>
     </dialog>
     <script src="script.js"></script>
+  <script>document.getElementById('themeBtn').onclick=()=>document.body.classList.toggle('dark')</script>
   </body>
 </html>
