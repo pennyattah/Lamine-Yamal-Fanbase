@@ -5,7 +5,7 @@
 
 Welcome to **LY10**, the ultimate independent fan-made documentation and tribute hub dedicated to FC Barcelona and Spain's wonderkid, **Lamine Yamal**. This project tracks his incredible football journey, record-breaking stats, and historic rise from the streets of Rocafonda 304 to global football dominance.
 
-🔗 **[Explore the Live Fanbase Site →](https://github.io)**
+🔗 **[Explore the Live Fanbase Site →](https://pennyattah.github.io/Lamine-Yamal-Fanbase/)**
 
 ---
 
