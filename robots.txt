@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://example.github.io/ly10/sitemap.xml
