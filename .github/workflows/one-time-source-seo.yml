@@ -1,0 +1,57 @@
+name: One-time homepage source SEO patch
+on:
+  push:
+    branches: [ly10-publication-upgrades]
+    paths: [.github/workflows/one-time-source-seo.yml]
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ly10-publication-upgrades
+      - name: Patch static homepage source
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          replacements={
+            '<link rel="canonical" href="https://github.io" />':'<link rel="canonical" href="https://ly10-fanbase.vercel.app/" />',
+            '<meta property="og:url" content="https://github.io" />':'<meta property="og:url" content="https://ly10-fanbase.vercel.app/" />',
+            '<meta property="og:image" content="https://github.ioassets/preview.jpg" />':'<meta property="og:image" content="https://ly10-fanbase.vercel.app/og-card.png" />',
+            '<meta name="twitter:image" content="https://github.ioassets/preview.jpg" />':'<meta name="twitter:image" content="https://ly10-fanbase.vercel.app/og-card.png" />',
+            '<link rel="icon" type="image/png" sizes="32x32" href="./ly10.png" />':'<link rel="icon" type="image/svg+xml" sizes="any" href="./favicon.svg" />',
+            'LIVE FAN DESK / EDIT AFTER EVERY MATCH':'LIVE MATCH DESK / AUTO-UPDATED',
+            'PLAYER INTELLIGENCE / EDITABLE FAN DATA':'PLAYER INTELLIGENCE / VERIFIED DATA',
+            'Season snapshots, visualized for quick scanning. Replace the figures after every match.':'Season snapshots with verified, competition-labelled data and dedicated tracker pages.',
+            '"url":"https://example.github.io/ly10/"':'"url":"https://ly10-fanbase.vercel.app/"',
+            'action="https://formspree.io/f/REPLACE_WITH_REAL_ID"':'action="https://formsubmit.co/penelopeolapejuattah@gmail.com"',
+            'action="https://buttondown.email/api/emails/embed-subscribe/ly10"':'action="https://formsubmit.co/penelopeolapejuattah@gmail.com"',
+            'href="https://github.com/" target="_blank" rel="noopener">REPORT AN ISSUE ↗':'href="https://github.com/pennyattah/Lamine-Yamal-Fanbase/issues/new" target="_blank" rel="noopener">REPORT AN ISSUE ↗',
+            'href="https://github.com/" target="_blank" rel="noopener">GitHub</a>':'href="https://github.com/pennyattah/Lamine-Yamal-Fanbase" target="_blank" rel="noopener">GitHub</a>',
+            '<a href="https://discord.com/" target="_blank" rel="noopener">Discord</a>':'<a href="mailto:penelopeolapejuattah@gmail.com?subject=LY10%20Fanbase">Email LY10</a>',
+            '<a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a>':'<a href="#feedback-form">Feedback</a>',
+            '<p>Join the public discussion on GitHub Discussions.</p>':'<p>Send your fan message to the LY10 inbox for moderation and future community features.</p>',
+            '<a class="button" href="https://github.com/USERNAME/REPO/discussions" target="_blank" rel="noopener">OPEN DISCUSSIONS →</a>':'<a class="button" href="#feedback-form">SEND TO FAN WALL →</a>'
+          }
+          for old,new in replacements.items():
+              if old not in s:
+                  print('pattern not present:',old[:80])
+              s=s.replace(old,new)
+          s=s.replace('\n    <title>LY10 — Lamine Yamal Fanbase</title>\n    <link rel="icon"','\n    <link rel="icon"',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit source-level SEO fixes
+        run: |
+          git config user.name "LY10 Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No source changes needed"
+          else
+            git commit -m "Fix homepage source SEO and fallback links"
+            git push origin HEAD:ly10-publication-upgrades
+          fi
