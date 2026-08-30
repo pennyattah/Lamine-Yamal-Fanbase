@@ -1,4 +1,4 @@
-name: Finalize LY10 homepage SEO
+name: Finalize LY10 homepage publication hub
 on:
   push:
     branches: [main]
@@ -11,36 +11,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Patch homepage source metadata and links
+        with:
+          ref: main
+      - name: Patch publication hub and verified stat fallbacks
         run: |
           python3 - <<'PY'
           from pathlib import Path
           p=Path('index.html')
-          s=p.read_text()
-          replacements={
-            '<link rel="canonical" href="https://github.io" />':'<link rel="canonical" href="https://ly10-fanbase.vercel.app/" />',
-            '<meta property="og:url" content="https://github.io" />':'<meta property="og:url" content="https://ly10-fanbase.vercel.app/" />',
-            '<meta property="og:image" content="https://github.ioassets/preview.jpg" />':'<meta property="og:image" content="https://ly10-fanbase.vercel.app/og-card.png" />',
-            '<meta name="twitter:image" content="https://github.ioassets/preview.jpg" />':'<meta name="twitter:image" content="https://ly10-fanbase.vercel.app/og-card.png" />',
-            '<link rel="icon" type="image/png" sizes="32x32" href="./ly10.png" />':'<link rel="icon" type="image/svg+xml" href="./favicon.svg" />',
-            '<div class="section-label">LIVE FAN DESK / EDIT AFTER EVERY MATCH</div>':'<div class="section-label">LIVE MATCH DESK / AUTO-UPDATED</div>',
-            '<div class="section-label">PLAYER INTELLIGENCE / EDITABLE FAN DATA</div>':'<div class="section-label">PLAYER INTELLIGENCE / VERIFIED SEASON DATA</div>',
-            'Season snapshots, visualized for quick scanning. Replace the figures after every match.':'Season snapshots with verified, competition-labelled data and dedicated tracker pages.',
-            '"url":"https://example.github.io/ly10/"':'"url":"https://ly10-fanbase.vercel.app/"'
-          }
-          for old,new in replacements.items(): s=s.replace(old,new)
-          s=s.replace('    <title>LY10 — Lamine Yamal Fanbase</title>\n','',1)
-          marker='<div class="project-links">'
-          add='<a href="stats.html">Yamal Tracker</a><a href="match-reports.html">Match Reports</a><a href="biography.html">Biography</a><a href="match-centre.html">Match Centre</a>'
-          if marker in s and 'href="stats.html">Yamal Tracker' not in s:
-              s=s.replace(marker,marker+add,1)
-          p.write_text(s)
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('<div class="stat-cards"><div><span>GOALS</span><b>18</b><small>2025/26 all competitions</small></div><div><span>ASSISTS</span><b>22</b><small>Creative output</small></div><div><span>CHANCES CREATED</span><b>87</b><small>Season total</small></div><div><span>TAKE-ONS WON</span><b>126</b><small>1v1 moments</small></div></div>','<div class="stat-cards"><div><span>GOALS</span><b>0</b><small>2026/27 La Liga</small></div><div><span>ASSISTS</span><b>0</b><small>2026/27 La Liga</small></div><div><span>MATCHES</span><b>2</b><small>League appearances</small></div><div><span>MINUTES</span><b>155</b><small>League minutes</small></div></div>')
+          old='<section class="project-desk section"><div class="section-label">09 / OPEN FAN PROJECT</div><div class="project-grid"><article><h3>START HERE</h3><p>New to LY10? Start with the story, then the match centre, then join the community.</p><a href="#story">BEGIN THE STORY →</a></article><article><h3>PROJECT ROADMAP</h3><p>Next: article archive, moderated fan submissions, fixture-data integration and downloadable wallpapers.</p><a href="roadmap.html">VIEW ROADMAP →</a></article><article><h3>TRANSPARENT BY DESIGN</h3><p>See changes, credits, attribution, privacy notes and source code for this independent fan project.</p><a href="changelog.html">PROJECT CHANGELOG →</a></article><article><h3>NEED TO REPORT SOMETHING?</h3><p>Found an error, broken image or accessibility issue? Let the creator know.</p><a href="https://github.com/pennyattah/Lamine-Yamal-Fanbase/issues/new" target="_blank" rel="noopener">REPORT AN ISSUE ↗</a></article></div><div class="project-links"><a href="privacy.html">Privacy</a><a href="credits.html">Credits &amp; sources</a><a href="https://github.com/pennyattah/Lamine-Yamal-Fanbase" target="_blank" rel="noopener">GitHub</a><a href="mailto:penelopeolapejuattah@gmail.com?subject=LY10%20Fanbase">Email LY10</a><a href="#feedback-form">Feedback</a></div></section>'
+          new='<section class="project-desk section"><div class="section-label">09 / LY10 PUBLICATION DESK</div><div class="project-grid"><article><h3>YAMAL TRACKER</h3><p>Verified 2026/27 league appearances, minutes, goals and assists in one dedicated player dashboard.</p><a href="stats.html">OPEN THE TRACKER →</a></article><article><h3>MATCH REPORTS</h3><p>An auto-growing archive of verified Barça results with a focused look at Lamine Yamal’s influence.</p><a href="match-reports.html">READ REPORTS →</a></article><article><h3>BIOGRAPHY &amp; RECORDS</h3><p>From La Masia to Barça No. 10: career milestones, records and honours with source links.</p><a href="biography.html">OPEN THE DOSSIER →</a></article><article><h3>LIVE MATCH CENTRE</h3><p>Latest result, next fixture, countdown, league position and Yamal season snapshot.</p><a href="match-centre.html">OPEN MATCH CENTRE →</a></article></div><div class="project-links"><a href="stats.html">Yamal Tracker</a><a href="match-reports.html">Match Reports</a><a href="biography.html">Biography</a><a href="match-centre.html">Match Centre</a><a href="wallpapers.html">Wallpapers</a><a href="privacy.html">Privacy</a><a href="credits.html">Credits &amp; sources</a><a href="https://github.com/pennyattah/Lamine-Yamal-Fanbase" target="_blank" rel="noopener">GitHub</a><a href="mailto:penelopeolapejuattah@gmail.com?subject=LY10%20Fanbase">Email LY10</a><a href="#feedback-form">Feedback</a></div></section>'
+          s=s.replace(old,new)
+          p.write_text(s,encoding='utf-8')
           PY
-      - name: Commit homepage cleanup
+      - name: Commit homepage publication hub
         run: |
-          if git diff --quiet; then exit 0; fi
+          if git diff --quiet -- index.html; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Finalize homepage SEO metadata and publication links"
-          git push
+          git commit -m "Promote LY10 publication hub on homepage"
+          git pull --rebase origin main
+          git push origin HEAD:main
