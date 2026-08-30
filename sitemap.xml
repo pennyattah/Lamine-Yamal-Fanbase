@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ly10-fanbase.vercel.app/</loc></url>
-  <url><loc>https://ly10-fanbase.vercel.app/roadmap.html</loc></url>
-  <url><loc>https://ly10-fanbase.vercel.app/changelog.html</loc></url>
-  <url><loc>https://ly10-fanbase.vercel.app/privacy.html</loc></url>
-  <url><loc>https://ly10-fanbase.vercel.app/credits.html</loc></url>
-  <url><loc>https://ly10-fanbase.vercel.app/wallpapers.html</loc></url>
+  <url><loc>https://ly10-fanbase.vercel.app/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/stats.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/match-centre.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/match-reports.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/biography.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/reports/2026-08-27-barcelona-2-0-athletic.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/wallpapers.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/roadmap.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/changelog.html</loc><changefreq>weekly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://ly10-fanbase.vercel.app/credits.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
 </urlset>
