@@ -114,4 +114,10 @@
     if(a.textContent.trim()==='Discord'){a.textContent='Email LY10';a.href=`mailto:${owner}?subject=LY10%20Fanbase`}
     if(a.textContent.trim()==='Telegram'){a.textContent='Feedback';a.href='#feedback-form';a.removeAttribute('target');a.removeAttribute('rel')}
   });
+  const fanWall=$('.comment-card');
+  if(fanWall){
+    const link=fanWall.querySelector('a[href*="USERNAME/REPO/discussions"]');
+    if(link){link.href='#feedback-form';link.removeAttribute('target');link.removeAttribute('rel');link.textContent='SEND TO FAN WALL →'}
+    const copy=fanWall.querySelector('p');if(copy)copy.textContent='Send your fan message to the LY10 inbox for moderation and future community features.';
+  }
 })();
