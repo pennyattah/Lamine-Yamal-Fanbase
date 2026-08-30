@@ -4,99 +4,114 @@
   const setText=(key,value)=>{const el=$(`[data-live="${key}"]`);if(el)el.textContent=value};
   const clearSkeleton=()=>$('.featured-match')?.classList.remove('skeleton-card');
 
-  /* Reliable match-centre fallback. This keeps the page useful even when no external API is available. */
-  const matchDesk={
-    lastLeague:'LA LIGA · MATCHDAY 1',lastStatus:'FULL TIME',lastHome:'BARÇA',lastHomeScore:'2',lastAwayScore:'0',lastAway:'ATHLETIC',
-    lastSummary:'FC Barcelona 2–0 Athletic Club — latest completed first-team result.',
-    updated:'Official club result · 27 Aug 2026',nextTitle:'BARÇA VS RAYO VALLECANO',nextMeta:'31 Aug 2026 · La Liga · 21:30 CEST',
-    stripResult:'BARÇA 2–0 ATHLETIC',stripNext:'RAYO · 31 AUG · 21:30',tablePosition:'VIEW OFFICIAL TABLE'
+  const FALLBACK={
+    updated:'Official club result · 27 Aug 2026',
+    last:{competition:'LA LIGA · MATCHDAY 1',status:'FULL TIME',home:'BARÇA',homeScore:2,awayScore:0,away:'ATHLETIC',summary:'FC Barcelona 2–0 Athletic Club — completed 27 Aug 2026.'},
+    next:{title:'BARÇA VS RAYO VALLECANO',meta:'La Liga · 31 Aug 2026 · 21:30 CEST',kickoff:'2026-08-31T21:30:00+02:00',opponent:'Rayo Vallecano'},
+    table:{label:'VIEW OFFICIAL TABLE'},
+    calendars:{
+      '2026-08':{label:'AUGUST',matches:{'31':{title:'BARÇA VS RAYO VALLECANO',meta:'La Liga · Home · 21:30 CEST',side:'home'}}},
+      '2026-09':{label:'SEPTEMBER',matches:{'6':{title:'VALENCIA VS BARÇA',meta:'La Liga · Away · 16:15 CEST',side:'away'},'9':{title:'BARÇA VS FEYENOORD',meta:'UEFA Champions League · Home · 18:45 CEST',side:'home'}}}
+    }
   };
-  Object.entries({
-    'last-league':matchDesk.lastLeague,'last-status':matchDesk.lastStatus,'last-home':matchDesk.lastHome,'last-home-score':matchDesk.lastHomeScore,
-    'last-away-score':matchDesk.lastAwayScore,'last-away':matchDesk.lastAway,'last-summary':matchDesk.lastSummary,'updated':matchDesk.updated,
-    'next-title':matchDesk.nextTitle,'next-meta':matchDesk.nextMeta,'strip-result':matchDesk.stripResult,'strip-next':matchDesk.stripNext,'table-position':matchDesk.tablePosition
-  }).forEach(([k,v])=>setText(k,v));
-  clearSkeleton();
 
-  /* Keep the visible countdown in sync with the actual next fixture. */
-  const nextKickoff=new Date('2026-08-31T21:30:00+02:00').getTime();
-  const countdown=$('#countdown');
-  const countdownTitle=$('.countdown-card h3');
-  if(countdownTitle)countdownTitle.innerHTML='BARÇA VS<br />RAYO';
-  const paintCountdown=()=>{
-    if(!countdown)return;
-    const remaining=Math.max(0,nextKickoff-Date.now());
-    const days=Math.floor(remaining/864e5),hours=Math.floor(remaining/36e5)%24,mins=Math.floor(remaining/6e4)%60;
-    countdown.innerHTML=[days,hours,mins].map(n=>`<b>${String(n).padStart(2,'0')}</b>`).join('<i>:</i>');
+  const applyMatchDesk=(desk)=>{
+    const last=desk.last||FALLBACK.last,next=desk.next||FALLBACK.next,table=desk.table||FALLBACK.table;
+    const stripResult=`${last.home} ${last.homeScore}–${last.awayScore} ${last.away}`;
+    const kickoff=next.kickoff?new Date(next.kickoff):null;
+    const stripNext=kickoff&&!Number.isNaN(kickoff.getTime())?`${next.opponent||next.away||'NEXT MATCH'} · ${kickoff.toLocaleDateString('en-GB',{day:'2-digit',month:'short'}).toUpperCase()}`:(next.opponent||next.away||'NEXT MATCH');
+    const updated=desk.updated?`Auto-updated · ${new Date(desk.updated).toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short'})}`:FALLBACK.updated;
+    Object.entries({
+      'last-league':last.competition,'last-status':last.status,'last-home':last.home,'last-home-score':last.homeScore,
+      'last-away-score':last.awayScore,'last-away':last.away,'last-summary':last.summary,'updated':updated,
+      'next-title':next.title,'next-meta':next.meta,'strip-result':stripResult,'strip-next':stripNext,'table-position':table.position?`${table.position}${['st','nd','rd'][table.position-1]||'th'} IN LA LIGA`:(table.label||'VIEW OFFICIAL TABLE')
+    }).forEach(([k,v])=>setText(k,v));
+    clearSkeleton();
   };
-  paintCountdown();setInterval(paintCountdown,1000);
 
-  /* Accurate September/October fixture calendar using currently published club fixtures. */
-  const calendars={
-    '2026-09':{label:'SEPTEMBER',matches:{6:['VALENCIA VS BARÇA','La Liga · Away · 16:15 CEST','away'],9:['BARÇA VS FEYENOORD','UEFA Champions League · Home · 18:45 CEST','home'],13:['LEVANTE VS BARÇA','La Liga · Away · Time TBA','away'],16:['BARÇA VS RACING','La Liga · Home · Time TBA','home'],20:['SEVILLA VS BARÇA','La Liga · Away · Time TBA','away']}},
-    '2026-10':{label:'OCTOBER',matches:{11:['BARÇA VS GETAFE','La Liga · Home · Time TBA','home'],13:['GALATASARAY VS BARÇA','UEFA Champions League · Away · 21:00 CEST','away'],18:['BETIS VS BARÇA','La Liga · Away · Time TBA','away'],20:['PSG VS BARÇA','UEFA Champions League · Away · 21:00 CEST','away'],25:['BARÇA VS REAL MADRID','La Liga · Home · Time TBA','home']}}
+  let countdownTimer;
+  const applyCountdown=(next)=>{
+    const countdown=$('#countdown'),title=$('.countdown-card h3');
+    if(!countdown||!next?.kickoff)return;
+    const kickoff=new Date(next.kickoff).getTime();
+    if(Number.isNaN(kickoff))return;
+    const opponent=(next.opponent||next.away||'NEXT OPPONENT').replace(/^FC\s+/i,'').toUpperCase();
+    if(title)title.innerHTML=`BARÇA VS<br />${opponent}`;
+    clearInterval(countdownTimer);
+    const paint=()=>{
+      const remaining=Math.max(0,kickoff-Date.now());
+      const days=Math.floor(remaining/864e5),hours=Math.floor(remaining/36e5)%24,mins=Math.floor(remaining/6e4)%60;
+      countdown.innerHTML=[days,hours,mins].map(n=>`<b>${String(n).padStart(2,'0')}</b>`).join('<i>:</i>');
+    };
+    paint();countdownTimer=setInterval(paint,1000);
   };
-  let calendarKey='2026-09';
-  const calendarRoot=$('.calendar-days'),calendarLabel=$('.calendar-head b'),calendarNext=$('#calendar-next');
-  const openDrawer=(title,meta)=>{
+
+  const openDrawer=(title,meta,venue='')=>{
     const drawer=$('#detail-drawer'),scrim=$('.drawer-scrim'),content=$('#drawer-content');
     if(!drawer||!scrim||!content)return;
-    content.innerHTML=`<p class="drawer-meta">FIXTURE DESK</p><h2 class="drawer-title">${title}</h2><p>${meta}</p><a class="drawer-action" href="https://www.fcbarcelona.com/en/football/first-team/schedule" target="_blank" rel="noopener">OFFICIAL FIXTURES ↗</a>`;
+    content.innerHTML=`<p class="drawer-meta">FIXTURE DESK</p><h2 class="drawer-title">${title}</h2><p>${meta}${venue?`<br />${venue}`:''}</p><a class="drawer-action" href="https://www.fcbarcelona.com/en/football/first-team/schedule" target="_blank" rel="noopener">OFFICIAL FIXTURES ↗</a>`;
     drawer.classList.add('open');scrim.classList.add('open');drawer.setAttribute('aria-hidden','false');
   };
-  const renderCalendar=()=>{
-    if(!calendarRoot||!calendarLabel)return;
-    const [year,month]=calendarKey.split('-').map(Number),cfg=calendars[calendarKey];
-    calendarLabel.textContent=cfg.label;
-    const first=new Date(year,month-1,1),days=new Date(year,month,0).getDate();
-    const mondayOffset=(first.getDay()+6)%7;
-    let html='<i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i>'+'<b></b>'.repeat(mondayOffset);
-    for(let day=1;day<=days;day++){
-      const m=cfg.matches[day];
-      html+=m?`<b class="matchday ${m[2]==='away'?'away':''}" data-cal-day="${day}" tabindex="0">${day}</b>`:`<b>${day}</b>`;
-    }
-    calendarRoot.innerHTML=html;
-    $$('[data-cal-day]').forEach(el=>{
-      const show=()=>{const m=cfg.matches[el.dataset.calDay];openDrawer(m[0],m[1])};
-      el.onclick=show;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show()}};
-    });
-    if(calendarNext)calendarNext.textContent=calendarKey==='2026-09'?'NEXT ›':'‹ PREV';
-  };
-  renderCalendar();
-  if(calendarNext)calendarNext.onclick=()=>{calendarKey=calendarKey==='2026-09'?'2026-10':'2026-09';renderCalendar()};
 
-  /* Focus-reading mode already has matching CSS; this activates it. */
+  const applyCalendar=(calendars)=>{
+    const calendarRoot=$('.calendar-days'),calendarLabel=$('.calendar-head b'),calendarNext=$('#calendar-next');
+    if(!calendarRoot||!calendarLabel||!calendars)return;
+    const keys=Object.keys(calendars).sort();if(!keys.length)return;
+    const current=new Date(),monthKey=`${current.getFullYear()}-${String(current.getMonth()+1).padStart(2,'0')}`;
+    let index=Math.max(0,keys.findIndex(k=>k>=monthKey));if(index<0)index=keys.length-1;
+    const render=()=>{
+      const key=keys[index],cfg=calendars[key],[year,month]=key.split('-').map(Number);
+      calendarLabel.textContent=cfg.label||new Date(year,month-1,1).toLocaleDateString('en-GB',{month:'long'}).toUpperCase();
+      const first=new Date(year,month-1,1),days=new Date(year,month,0).getDate(),offset=(first.getDay()+6)%7;
+      let html='<i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i>'+'<b></b>'.repeat(offset);
+      for(let day=1;day<=days;day++){
+        const m=cfg.matches?.[String(day)];
+        html+=m?`<b class="matchday ${m.side==='away'?'away':''}" data-cal-day="${day}" tabindex="0">${day}</b>`:`<b>${day}</b>`;
+      }
+      calendarRoot.innerHTML=html;
+      $$('[data-cal-day]').forEach(el=>{const show=()=>{const m=cfg.matches[String(el.dataset.calDay)];if(m)openDrawer(m.title,m.meta,m.venue)};el.onclick=show;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show()}}});
+      if(calendarNext)calendarNext.textContent=keys.length>1?(index===keys.length-1?'‹ PREV':'NEXT ›'):'';
+    };
+    render();
+    if(calendarNext)calendarNext.onclick=()=>{if(keys.length<2)return;index=index===keys.length-1?Math.max(0,index-1):Math.min(keys.length-1,index+1);render()};
+  };
+
+  const loadLive=async()=>{
+    let desk=FALLBACK;
+    try{
+      const response=await fetch(`./live-data.json?v=${Date.now()}`,{cache:'no-store'});
+      if(response.ok){const json=await response.json();if(json?.last&&json?.next)desk=json}
+    }catch{}
+    applyMatchDesk(desk);applyCountdown(desk.next);applyCalendar(desk.calendars||FALLBACK.calendars);
+  };
+  loadLive();
+
   const focusButton=$('#focus-reading'),feature=$('.feature-story');
   if(focusButton&&feature)focusButton.onclick=()=>{
-    const on=feature.classList.toggle('reading-focus');
-    focusButton.textContent=on?'EXIT FOCUS':'FOCUS READING';
+    const on=feature.classList.toggle('reading-focus');focusButton.textContent=on?'EXIT FOCUS':'FOCUS READING';
     if(on)feature.scrollIntoView({behavior:document.body.classList.contains('reduce-motion')?'auto':'smooth',block:'start'});
   };
 
-  /* Accessibility controls. */
   let textScale=Number(localStorage.getItem('ly10-text-scale')||100);
   const applyScale=()=>{document.body.style.fontSize=`${textScale}%`;localStorage.setItem('ly10-text-scale',String(textScale))};
   applyScale();
   $('#font-up')?.addEventListener('click',()=>{textScale=Math.min(125,textScale+10);applyScale()});
   $('#font-down')?.addEventListener('click',()=>{textScale=Math.max(85,textScale-10);applyScale()});
-  const reduced=localStorage.getItem('ly10-reduced-motion')==='true';
-  if(reduced)document.body.classList.add('reduce-motion');
+  if(localStorage.getItem('ly10-reduced-motion')==='true')document.body.classList.add('reduce-motion');
   $('#reduce-motion')?.addEventListener('click',()=>{const on=document.body.classList.toggle('reduce-motion');localStorage.setItem('ly10-reduced-motion',String(on))});
 
-  /* Reading progress bar. */
   const progress=$('.reading-progress i');
   const paintProgress=()=>{if(!progress)return;const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=`${max>0?Math.min(100,scrollY/max*100):0}%`};
   addEventListener('scroll',paintProgress,{passive:true});paintProgress();
 
-  /* Fill the previously blank World Cup section without changing the site's visual language. */
   const world=$('#world-cup-content'),wc=window.LY10_DATA?.worldCup;
-  if(world&&wc){
-    world.innerHTML=`<div class="section-label">${wc.label}</div><div class="stats-title"><h2>${wc.title}</h2><p>${wc.team} · ${wc.tournament}<br />${wc.form}</p></div><div class="milestones"><div><b>26</b><span>${wc.tournament}<br />Global stage</span></div><div><b>🇪🇸</b><span>${wc.team}<br />National team</span></div><div><b>→</b><span>${wc.status}<br />Road continues</span></div></div>`;
-  }
+  if(world&&wc)world.innerHTML=`<div class="section-label">${wc.label}</div><div class="stats-title"><h2>${wc.title}</h2><p>${wc.team} · ${wc.tournament}<br />${wc.form}</p></div><div class="milestones"><div><b>26</b><span>${wc.tournament}<br />Global stage</span></div><div><b>🇪🇸</b><span>${wc.team}<br />National team</span></div><div><b>→</b><span>${wc.status}<br />Road continues</span></div></div>`;
 
-  /* Point project actions to this project instead of the generic GitHub homepage. */
   const repo='https://github.com/pennyattah/Lamine-Yamal-Fanbase';
-  $$('.project-desk a[href="https://github.com/"]').forEach(a=>{
-    if(a.textContent.includes('REPORT'))a.href=repo+'/issues/new';else a.href=repo;
+  $$('.project-desk a[href="https://github.com/"]').forEach(a=>{a.href=a.textContent.includes('REPORT')?repo+'/issues/new':repo});
+  const owner='penelopeolapejuattah@gmail.com';
+  $$('.project-links a').forEach(a=>{
+    if(a.textContent.trim()==='Discord'){a.textContent='Email LY10';a.href=`mailto:${owner}?subject=LY10%20Fanbase`}
+    if(a.textContent.trim()==='Telegram'){a.textContent='Feedback';a.href='#feedback-form';a.removeAttribute('target');a.removeAttribute('rel')}
   });
 })();
