@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30T21:00:00Z",
+  "updated": "2026-08-30T21:30:00Z",
   "source": "FC Barcelona official schedule, results and standings",
   "last": {
     "competition": "LA LIGA · MATCHDAY 1",
@@ -34,9 +34,9 @@
       "matches": {
         "6": {"title": "VALENCIA CF VS BARÇA", "meta": "La Liga · Away · 16:15 CEST", "venue": "Mestalla", "side": "away"},
         "9": {"title": "BARÇA VS FEYENOORD", "meta": "UEFA Champions League · Home · 18:45 CEST", "venue": "Spotify Camp Nou", "side": "home"},
-        "13": {"title": "LEVANTE VS BARÇA", "meta": "La Liga · Away · 16:15 CEST", "venue": "Ciutat de Valencia", "side": "away"},
-        "16": {"title": "BARÇA VS RACING DE SANTANDER", "meta": "La Liga · Home · 21:30 CEST", "venue": "Spotify Camp Nou", "side": "home"},
-        "19": {"title": "SEVILLA VS BARÇA", "meta": "La Liga · Away · 21:00 CEST", "venue": "Ramón Sánchez-Pizjuán", "side": "away"}
+        "13": {"title": "LEVANTE VS BARÇA", "meta": "La Liga · Away · Time TBA", "venue": "Ciutat de Valencia", "side": "away"},
+        "16": {"title": "BARÇA VS RACING DE SANTANDER", "meta": "La Liga · Home · Time TBA", "venue": "Spotify Camp Nou", "side": "home"},
+        "20": {"title": "SEVILLA VS BARÇA", "meta": "La Liga · Away · Time TBA", "venue": "Ramón Sánchez-Pizjuán", "side": "away"}
       }
     },
     "2026-10": {
