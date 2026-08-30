@@ -1,0 +1,46 @@
+name: Finalize LY10 homepage SEO
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/finalize-homepage-seo.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch homepage source metadata and links
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          replacements={
+            '<link rel="canonical" href="https://github.io" />':'<link rel="canonical" href="https://ly10-fanbase.vercel.app/" />',
+            '<meta property="og:url" content="https://github.io" />':'<meta property="og:url" content="https://ly10-fanbase.vercel.app/" />',
+            '<meta property="og:image" content="https://github.ioassets/preview.jpg" />':'<meta property="og:image" content="https://ly10-fanbase.vercel.app/og-card.png" />',
+            '<meta name="twitter:image" content="https://github.ioassets/preview.jpg" />':'<meta name="twitter:image" content="https://ly10-fanbase.vercel.app/og-card.png" />',
+            '<link rel="icon" type="image/png" sizes="32x32" href="./ly10.png" />':'<link rel="icon" type="image/svg+xml" href="./favicon.svg" />',
+            '<div class="section-label">LIVE FAN DESK / EDIT AFTER EVERY MATCH</div>':'<div class="section-label">LIVE MATCH DESK / AUTO-UPDATED</div>',
+            '<div class="section-label">PLAYER INTELLIGENCE / EDITABLE FAN DATA</div>':'<div class="section-label">PLAYER INTELLIGENCE / VERIFIED SEASON DATA</div>',
+            'Season snapshots, visualized for quick scanning. Replace the figures after every match.':'Season snapshots with verified, competition-labelled data and dedicated tracker pages.',
+            '"url":"https://example.github.io/ly10/"':'"url":"https://ly10-fanbase.vercel.app/"'
+          }
+          for old,new in replacements.items(): s=s.replace(old,new)
+          s=s.replace('    <title>LY10 — Lamine Yamal Fanbase</title>\n','',1)
+          marker='<div class="project-links">'
+          add='<a href="stats.html">Yamal Tracker</a><a href="match-reports.html">Match Reports</a><a href="biography.html">Biography</a><a href="match-centre.html">Match Centre</a>'
+          if marker in s and 'href="stats.html">Yamal Tracker' not in s:
+              s=s.replace(marker,marker+add,1)
+          p.write_text(s)
+          PY
+      - name: Commit homepage cleanup
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Finalize homepage SEO metadata and publication links"
+          git push
