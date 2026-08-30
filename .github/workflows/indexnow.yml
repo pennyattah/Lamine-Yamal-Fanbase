@@ -1,0 +1,37 @@
+name: Notify IndexNow
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify participating search engines
+        env:
+          HOST: ly10-fanbase.vercel.app
+          KEY: ff6594d2e03b575b2f5624fb1534e1cf
+          KEY_LOCATION: https://ly10-fanbase.vercel.app/ff6594d2e03b575b2f5624fb1534e1cf.txt
+        run: |
+          cat > payload.json <<'JSON'
+          {
+            "host": "ly10-fanbase.vercel.app",
+            "key": "ff6594d2e03b575b2f5624fb1534e1cf",
+            "keyLocation": "https://ly10-fanbase.vercel.app/ff6594d2e03b575b2f5624fb1534e1cf.txt",
+            "urlList": [
+              "https://ly10-fanbase.vercel.app/",
+              "https://ly10-fanbase.vercel.app/stats.html",
+              "https://ly10-fanbase.vercel.app/biography.html",
+              "https://ly10-fanbase.vercel.app/match-centre.html",
+              "https://ly10-fanbase.vercel.app/match-reports.html",
+              "https://ly10-fanbase.vercel.app/wallpapers.html",
+              "https://ly10-fanbase.vercel.app/reports/2026-08-27-barcelona-2-0-athletic.html"
+            ]
+          }
+          JSON
+          code=$(curl -sS -o response.txt -w "%{http_code}" -X POST "https://api.indexnow.org/IndexNow" -H "Content-Type: application/json; charset=utf-8" --data-binary @payload.json)
+          cat response.txt || true
+          echo "IndexNow HTTP status: $code"
+          test "$code" = "200" || test "$code" = "202"
