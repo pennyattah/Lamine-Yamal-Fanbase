@@ -9,7 +9,7 @@ const submitToOwner=async(form,type)=>{
   const message=form.querySelector('.form-message'),button=form.querySelector('button[type="submit"]');
   if(message)message.textContent='Sending…';if(button)button.disabled=true;
   const body={};new FormData(form).forEach((value,key)=>body[key]=value);
-  body.form_type=type;body._subject=type==='Feedback'?'New LY10 feedback / correction':'New LY10 matchday signup';body._template='table';body._captcha='false';body._url=location.href;body._honey='';
+  body.form_type=type;body._subject=type==='Feedback'?'New LY10 feedback / correction':'New LY10 matchday signup';body._template='table';body._captcha='false';body._url=location.href;body._honey='';if(body.email)body._replyto=body.email;
   try{
     const response=await fetch(formEndpoint,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(body)});
     if(!response.ok)throw new Error('Submission failed');
@@ -19,7 +19,11 @@ const submitToOwner=async(form,type)=>{
     if(message)message.textContent=`Couldn’t send automatically. Email ${LY10_OWNER} instead.`;
   }finally{if(button)button.disabled=false}
 };
-const feedbackForm=document.querySelector('#feedback-form');if(feedbackForm){feedbackForm.action=`https://formsubmit.co/${LY10_OWNER}`;feedbackForm.method='POST';feedbackForm.addEventListener('submit',e=>{e.preventDefault();submitToOwner(feedbackForm,'Feedback')})}
+const feedbackForm=document.querySelector('#feedback-form');if(feedbackForm){
+  feedbackForm.action=`https://formsubmit.co/${LY10_OWNER}`;feedbackForm.method='POST';
+  if(!feedbackForm.querySelector('input[type="email"]')){const label=document.createElement('label');label.textContent='Your email (optional)';const input=document.createElement('input');input.type='email';input.name='email';input.placeholder='you@example.com';input.autocomplete='email';label.appendChild(input);feedbackForm.insertBefore(label,feedbackForm.querySelector('button[type="submit"]'))}
+  feedbackForm.addEventListener('submit',e=>{e.preventDefault();submitToOwner(feedbackForm,'Feedback')});
+}
 const newsletterForm=document.querySelector('#newsletter-form');if(newsletterForm){newsletterForm.action=`https://formsubmit.co/${LY10_OWNER}`;newsletterForm.method='POST';newsletterForm.addEventListener('submit',e=>{e.preventDefault();submitToOwner(newsletterForm,'Matchday signup')})}
 
 document.querySelector('#wallpaper-button')?.addEventListener('click',e=>{e.currentTarget.textContent='YOU’RE ON THE LIST ✓'});document.querySelector('#comment-button')?.addEventListener('click',()=>alert('Comments will open when moderation is connected.'));
