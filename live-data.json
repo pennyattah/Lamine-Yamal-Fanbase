@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-30T20:45:00Z",
-  "source": "FC Barcelona official schedule and results",
+  "updated": "2026-08-30T20:58:00Z",
+  "source": "FC Barcelona official schedule, results and standings",
   "last": {
     "competition": "LA LIGA · MATCHDAY 1",
     "status": "FULL TIME",
@@ -19,8 +19,8 @@
     "kickoff": "2026-08-31T21:30:00+02:00"
   },
   "table": {
-    "position": null,
-    "label": "VIEW OFFICIAL TABLE"
+    "position": 2,
+    "label": "2ND IN LA LIGA"
   },
   "calendars": {
     "2026-08": {
@@ -32,8 +32,21 @@
     "2026-09": {
       "label": "SEPTEMBER",
       "matches": {
-        "6": {"title": "VALENCIA VS BARÇA", "meta": "La Liga · Away · 16:15 CEST", "side": "away"},
-        "9": {"title": "BARÇA VS FEYENOORD", "meta": "UEFA Champions League · Home · 18:45 CEST", "side": "home"}
+        "6": {"title": "VALENCIA CF VS BARÇA", "meta": "La Liga · Away · 16:15 CEST", "venue": "Mestalla", "side": "away"},
+        "9": {"title": "BARÇA VS FEYENOORD", "meta": "UEFA Champions League · Home · 18:45 CEST", "venue": "Spotify Camp Nou", "side": "home"},
+        "13": {"title": "LEVANTE VS BARÇA", "meta": "La Liga · Away · Time TBA", "venue": "Ciutat de Valencia", "side": "away"},
+        "16": {"title": "BARÇA VS RACING DE SANTANDER", "meta": "La Liga · Home · Time TBA", "venue": "Spotify Camp Nou", "side": "home"},
+        "20": {"title": "SEVILLA VS BARÇA", "meta": "La Liga · Away · Time TBA", "venue": "Ramón Sánchez-Pizjuán", "side": "away"}
+      }
+    },
+    "2026-10": {
+      "label": "OCTOBER",
+      "matches": {
+        "11": {"title": "BARÇA VS GETAFE", "meta": "La Liga · Home · Time TBA", "venue": "Spotify Camp Nou", "side": "home"},
+        "13": {"title": "GALATASARAY VS BARÇA", "meta": "UEFA Champions League · Away · 21:00 CEST", "venue": "RAMS Park", "side": "away"},
+        "18": {"title": "REAL BETIS VS BARÇA", "meta": "La Liga · Away · Time TBA", "venue": "Estadio La Cartuja de Sevilla", "side": "away"},
+        "20": {"title": "PARIS SAINT-GERMAIN VS BARÇA", "meta": "UEFA Champions League · Away · 21:00 CEST", "venue": "Parc des Princes", "side": "away"},
+        "25": {"title": "BARÇA VS REAL MADRID", "meta": "La Liga · Home · Time TBA", "venue": "Spotify Camp Nou", "side": "home"}
       }
     }
   }
