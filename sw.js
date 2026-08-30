@@ -1,8 +1,7 @@
-const VERSION='ly10-v4';
+const VERSION='ly10-v5';
 const CORE=`${VERSION}-core`;
 const RUNTIME=`${VERSION}-runtime`;
 const IMAGE_CACHE=`${VERSION}-images`;
-const BASE=new URL('./',self.location.href).pathname;
 const coreFiles=['./','./index.html','./style.css','./extras.css','./pro.css','./app.css','./living.css','./refactor.css','./script.js','./pro.js','./data.js','./app.js','./data-service.js','./site.webmanifest','./favicon.svg','./404.html'];
 
 self.addEventListener('install',event=>{
@@ -28,24 +27,25 @@ const networkWithTimeout=async(request,ms=4500)=>{
 };
 
 const networkFirst=async request=>{
-  const cache=await caches.open(RUNTIME);
+  const runtime=await caches.open(RUNTIME);
   try{
     const response=await networkWithTimeout(request);
-    if(response&&response.ok)cache.put(request,response.clone());
+    if(response&&response.ok)runtime.put(request,response.clone());
     return response;
   }catch{
-    return (await cache.match(request)) || (await caches.match('./index.html')) || (await caches.match('./')) || Response.error();
+    return (await caches.match(request)) || (await caches.match('./index.html')) || (await caches.match('./')) || Response.error();
   }
 };
 
 const staleWhileRevalidate=async request=>{
-  const cache=await caches.open(RUNTIME);
-  const cached=await cache.match(request);
+  const runtime=await caches.open(RUNTIME);
+  const cached=await caches.match(request);
   const refresh=fetch(request).then(response=>{
-    if(response&&(response.ok||response.type==='opaque'))cache.put(request,response.clone());
+    if(response&&(response.ok||response.type==='opaque'))runtime.put(request,response.clone());
     return response;
   }).catch(()=>null);
-  return cached || refresh || Response.error();
+  if(cached){refresh.catch(()=>{});return cached}
+  return (await refresh) || Response.error();
 };
 
 const cacheImage=async request=>{
