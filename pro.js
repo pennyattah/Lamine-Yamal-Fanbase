@@ -43,8 +43,5 @@ const topButton=document.querySelector('.back-top');addEventListener('scroll',()
 // Keep the four homepage number cards aligned with the same verified LaLiga feed used by the tracker page.
 (()=>{const cards=[...document.querySelectorAll('.stat-cards > div')];if(cards.length<4)return;fetch(`player-stats.json?v=${Date.now()}`,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{const l=d.league||{};const values=[['GOALS',l.goals,'2026/27 La Liga'],['ASSISTS',l.assists,'2026/27 La Liga'],['MATCHES',l.matches,'League appearances'],['MINUTES',l.minutes,'League minutes']];cards.slice(0,4).forEach((card,i)=>{const [label,value,caption]=values[i];const s=card.querySelector('span'),b=card.querySelector('b'),small=card.querySelector('small');if(s)s.textContent=label;if(b)b.textContent=value??'—';if(small)small.textContent=caption});}).catch(()=>{});})();
 
-// Vercel Web Analytics hook. It remains inert unless Web Analytics is enabled for the Vercel project.
-(()=>{window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};if(!document.querySelector('script[data-ly10-analytics]')){const s=document.createElement('script');s.defer=true;s.src='/_vercel/insights/script.js';s.dataset.ly10Analytics='true';document.head.appendChild(s)}})();
-
 // Remove any old service worker from earlier mobile-reliability experiments.
 if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});if('caches' in window)caches.keys().then(keys=>keys.filter(k=>k.startsWith('ly10-')).forEach(k=>caches.delete(k))).catch(()=>{})}
