@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://example.github.io/ly10/</loc></url><url><loc>https://example.github.io/ly10/roadmap.html</loc></url><url><loc>https://example.github.io/ly10/changelog.html</loc></url><url><loc>https://example.github.io/ly10/privacy.html</loc></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ly10-fanbase.vercel.app/</loc></url>
+  <url><loc>https://ly10-fanbase.vercel.app/roadmap.html</loc></url>
+  <url><loc>https://ly10-fanbase.vercel.app/changelog.html</loc></url>
+  <url><loc>https://ly10-fanbase.vercel.app/privacy.html</loc></url>
+  <url><loc>https://ly10-fanbase.vercel.app/credits.html</loc></url>
+  <url><loc>https://ly10-fanbase.vercel.app/wallpapers.html</loc></url>
+</urlset>
