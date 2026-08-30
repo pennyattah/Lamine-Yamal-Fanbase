@@ -1,5 +1,5 @@
 window.LY10_DATA={
-  version:'1.3.0',fixture:{opponent:'Sevilla',competition:'La Liga',home:'Barça',date:'2026-08-17T19:00:00+01:00'},
+  version:'1.3.1',fixture:{opponent:'Rayo Vallecano',competition:'La Liga',home:'Barça',date:'2026-08-31T21:30:00+02:00'},
   stats:[['GOALS',18,'2025/26 all competitions','A season total — update after each match.'],['ASSISTS',22,'Creative output','Includes match-winning final-ball moments.'],['CHANCES CREATED',87,'Season total','Fan data; providers may use different definitions.'],['TAKE-ONS WON',126,'1v1 moments','Successful dribbles and carries.']],
   poll:{id:'best-weapon',question:'WHAT IS HIS BEST WEAPON?',options:['Dribbling','Vision','Finishing','Composure']},
   quiz:[{q:'At what age did Lamine make his Barcelona first-team debut?',answers:['14','15','16'],correct:1},{q:'Which position is most associated with Lamine?',answers:['Right wing','Centre-back','Goalkeeper'],correct:0},{q:'Which academy helped shape his game?',answers:['La Masia','Ajax Academy','Cobham'],correct:0},{q:'Which country does he represent internationally?',answers:['Spain','Morocco','Equatorial Guinea'],correct:0}],
