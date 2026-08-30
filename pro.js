@@ -16,12 +16,17 @@ const submitToOwner=async(form,type)=>{
     if(message)message.textContent=type==='Feedback'?'Sent ✓ Thanks — your message reached the LY10 inbox.':'Saved ✓ Your email reached the LY10 signup inbox.';
     form.reset();
   }catch{
-    if(message)message.textContent=`Couldn’t send automatically. Email ${LY10_OWNER} instead.`;
+    const subject=encodeURIComponent(body._subject||'LY10 message');
+    const fallbackText=Object.entries(body).filter(([key])=>!key.startsWith('_')).map(([key,value])=>`${key}: ${value}`).join('\n\n');
+    const href=`mailto:${LY10_OWNER}?subject=${subject}&body=${encodeURIComponent(fallbackText)}`;
+    if(message)message.innerHTML=`Automatic sending is unavailable. <a href="${href}">Send this by email instead ↗</a>`;
   }finally{if(button)button.disabled=false}
 };
 const feedbackForm=document.querySelector('#feedback-form');if(feedbackForm){
   feedbackForm.action=`https://formsubmit.co/${LY10_OWNER}`;feedbackForm.method='POST';
-  if(!feedbackForm.querySelector('input[type="email"]')){const label=document.createElement('label');label.textContent='Your email (optional)';const input=document.createElement('input');input.type='email';input.name='email';input.placeholder='you@example.com';input.autocomplete='email';label.appendChild(input);feedbackForm.insertBefore(label,feedbackForm.querySelector('button[type="submit"]'))}
+  const firstButton=feedbackForm.querySelector('button[type="submit"]');
+  if(!feedbackForm.querySelector('input[name="name"]')){const label=document.createElement('label');label.textContent='Your name (optional)';const input=document.createElement('input');input.type='text';input.name='name';input.placeholder='Your name';input.autocomplete='name';label.appendChild(input);feedbackForm.insertBefore(label,firstButton)}
+  if(!feedbackForm.querySelector('input[type="email"]')){const label=document.createElement('label');label.textContent='Your email (optional)';const input=document.createElement('input');input.type='email';input.name='email';input.placeholder='you@example.com';input.autocomplete='email';label.appendChild(input);feedbackForm.insertBefore(label,firstButton)}
   feedbackForm.addEventListener('submit',e=>{e.preventDefault();submitToOwner(feedbackForm,'Feedback')});
 }
 const newsletterForm=document.querySelector('#newsletter-form');if(newsletterForm){newsletterForm.action=`https://formsubmit.co/${LY10_OWNER}`;newsletterForm.method='POST';newsletterForm.addEventListener('submit',e=>{e.preventDefault();submitToOwner(newsletterForm,'Matchday signup')})}
