@@ -1,0 +1,40 @@
+{
+  "updated": "2026-08-30T20:45:00Z",
+  "source": "FC Barcelona official schedule and results",
+  "last": {
+    "competition": "LA LIGA · MATCHDAY 1",
+    "status": "FULL TIME",
+    "home": "BARÇA",
+    "homeScore": 2,
+    "awayScore": 0,
+    "away": "ATHLETIC",
+    "summary": "FC Barcelona 2–0 Athletic Club — completed 27 Aug 2026."
+  },
+  "next": {
+    "home": "FC Barcelona",
+    "away": "Rayo Vallecano",
+    "opponent": "Rayo Vallecano",
+    "title": "BARÇA VS RAYO VALLECANO",
+    "meta": "La Liga · 31 Aug 2026 · 21:30 CEST · Spotify Camp Nou",
+    "kickoff": "2026-08-31T21:30:00+02:00"
+  },
+  "table": {
+    "position": null,
+    "label": "VIEW OFFICIAL TABLE"
+  },
+  "calendars": {
+    "2026-08": {
+      "label": "AUGUST",
+      "matches": {
+        "31": {"title": "BARÇA VS RAYO VALLECANO", "meta": "La Liga · Home · 21:30 CEST", "venue": "Spotify Camp Nou", "side": "home"}
+      }
+    },
+    "2026-09": {
+      "label": "SEPTEMBER",
+      "matches": {
+        "6": {"title": "VALENCIA VS BARÇA", "meta": "La Liga · Away · 16:15 CEST", "side": "away"},
+        "9": {"title": "BARÇA VS FEYENOORD", "meta": "UEFA Champions League · Home · 18:45 CEST", "side": "home"}
+      }
+    }
+  }
+}
