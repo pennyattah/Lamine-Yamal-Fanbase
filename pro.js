@@ -40,6 +40,24 @@ const topButton=document.querySelector('.back-top');addEventListener('scroll',()
 // Publication links: add search-friendly LY10 destinations without redesigning the existing homepage.
 (()=>{const wrap=document.querySelector('.project-links');if(!wrap)return;const links=[['Yamal Tracker','stats.html'],['Match Reports','match-reports.html'],['Biography','biography.html'],['Match Centre','match-centre.html']];links.forEach(([label,href])=>{if(![...wrap.querySelectorAll('a')].some(a=>a.getAttribute('href')===href)){const a=document.createElement('a');a.href=href;a.textContent=label;wrap.appendChild(a)}});const label=document.querySelector('#match-centre .section-label');if(label)label.textContent='LIVE MATCH DESK / AUTO-UPDATED';const statCopy=document.querySelector('.stats-title p');if(statCopy)statCopy.textContent='Verified, competition-labelled season data with an auto-updated Yamal tracker.';})();
 
+// Make the new publication pages first-class parts of the main site.
+(()=>{
+  const topNav=[...document.querySelectorAll('header.nav nav a')];
+  const destinations=[['Match Centre','match-centre.html'],['Yamal Tracker','stats.html'],['Biography','biography.html'],['Match Reports','match-reports.html']];
+  topNav.slice(0,4).forEach((a,i)=>{const item=destinations[i];if(item){a.textContent=item[0];a.href=item[1]}});
+
+  const bottomMatches=document.querySelector('.bottom-nav a[href="#match-centre"]');if(bottomMatches)bottomMatches.href='match-centre.html';
+  const bottomStats=document.querySelector('.bottom-nav a[href="#stats"]');if(bottomStats)bottomStats.href='stats.html';
+
+  const addCtas=(section,items)=>{const host=document.querySelector(section);if(!host||host.querySelector('[data-publication-ctas]'))return;const row=document.createElement('div');row.dataset.publicationCtas='true';row.style.display='flex';row.style.flexWrap='wrap';row.style.gap='12px';row.style.marginTop='24px';items.forEach(([label,href,light])=>{const a=document.createElement('a');a.href=href;a.className=light?'button light':'button';a.textContent=label+' →';row.appendChild(a)});host.appendChild(row)};
+  addCtas('#match-centre',[['OPEN FULL MATCH CENTRE','match-centre.html',false],['READ MATCH REPORTS','match-reports.html',true]]);
+  addCtas('#stats',[['OPEN YAMAL TRACKER','stats.html',false]]);
+  addCtas('#story',[['FULL BIOGRAPHY & RECORDS','biography.html',false]]);
+
+  const projectGrid=[...document.querySelectorAll('.project-grid article')];
+  if(projectGrid[0]){const a=projectGrid[0].querySelector('a');if(a){a.href='biography.html';a.textContent='OPEN BIOGRAPHY →'}}
+})();
+
 // Keep the four homepage number cards aligned with the same verified LaLiga feed used by the tracker page.
 (()=>{const cards=[...document.querySelectorAll('.stat-cards > div')];if(cards.length<4)return;fetch(`player-stats.json?v=${Date.now()}`,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{const l=d.league||{};const values=[['GOALS',l.goals,'2026/27 La Liga'],['ASSISTS',l.assists,'2026/27 La Liga'],['MATCHES',l.matches,'League appearances'],['MINUTES',l.minutes,'League minutes']];cards.slice(0,4).forEach((card,i)=>{const [label,value,caption]=values[i];const s=card.querySelector('span'),b=card.querySelector('b'),small=card.querySelector('small');if(s)s.textContent=label;if(b)b.textContent=value??'—';if(small)small.textContent=caption});}).catch(()=>{});})();
 
