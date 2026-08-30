@@ -78,10 +78,17 @@
 
   const loadLive=async()=>{
     let desk=FALLBACK;
-    try{
-      const response=await fetch(`./live-data.json?v=${Date.now()}`,{cache:'no-store'});
-      if(response.ok){const json=await response.json();if(json?.last&&json?.next)desk=json}
-    }catch{}
+    const stamp=Date.now();
+    const sources=[
+      `https://raw.githubusercontent.com/pennyattah/Lamine-Yamal-Fanbase/main/live-data.json?v=${stamp}`,
+      `./live-data.json?v=${stamp}`
+    ];
+    for(const url of sources){
+      try{
+        const response=await fetch(url,{cache:'no-store'});
+        if(response.ok){const json=await response.json();if(json?.last&&json?.next){desk=json;break}}
+      }catch{}
+    }
     applyMatchDesk(desk);applyCountdown(desk.next);applyCalendar(desk.calendars||FALLBACK.calendars);
   };
   loadLive();
