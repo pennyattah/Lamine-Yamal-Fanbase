@@ -1,0 +1,35 @@
+{
+  "updated": "2026-08-30T21:30:00Z",
+  "season": "2026/27",
+  "player": "Lamine Yamal",
+  "shirt": 10,
+  "competition": "La Liga",
+  "league": {
+    "matches": 2,
+    "starts": 2,
+    "minutes": 155,
+    "goals": 0,
+    "assists": 0,
+    "shots": 6,
+    "yellowCards": 0,
+    "redCards": 0
+  },
+  "previousSeason": {
+    "season": "2025/26",
+    "leagueGoals": 16,
+    "leagueAssists": 11,
+    "note": "FC Barcelona reported 16 LaLiga goals and 11 assists in the title-winning 2025/26 season."
+  },
+  "profile": {
+    "born": "13 July 2007",
+    "birthplace": "Esplugues de Llobregat, Spain",
+    "height": "178 cm",
+    "weight": "76 kg",
+    "position": "Forward / right wing",
+    "contract": "FC Barcelona through 30 June 2031"
+  },
+  "sources": [
+    {"label":"LaLiga official player statistics","url":"https://www.laliga.com/en-NG/player/lamine-yamal"},
+    {"label":"FC Barcelona official player profile","url":"https://www.fcbarcelona.com/en/football/first-team/players/129404/lamine-yamal-nasraoui-ebana"}
+  ]
+}
