@@ -4,8 +4,7 @@ const pageUrl=encodeURIComponent(location.href);const whatsApp=document.querySel
 document.querySelectorAll('#feedback-form,#newsletter-form').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault();const msg=form.querySelector('.form-message');if(msg)msg.textContent='Thanks — your note is saved locally for this demo.';form.reset()}));document.querySelector('#wallpaper-button')?.addEventListener('click',e=>{e.currentTarget.textContent='YOU’RE ON THE LIST ✓'});document.querySelector('#comment-button')?.addEventListener('click',()=>alert('Comments will open when moderation is connected.'));
 const topButton=document.querySelector('.back-top');addEventListener('scroll',()=>topButton?.classList.toggle('show',scrollY>500),{passive:true});topButton?.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
-// Mobile resilience: cache the site shell so repeat visits survive weak or temporary connections.
-if('serviceWorker' in navigator){addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{})})}
-
-// Small connection-status notice. It appears only when the device is offline.
-(()=>{const notice=document.createElement('div');notice.id='connection-notice';notice.setAttribute('role','status');notice.setAttribute('aria-live','polite');Object.assign(notice.style,{position:'fixed',left:'50%',bottom:'78px',transform:'translateX(-50%)',zIndex:'100',background:'#07182d',color:'#fff',padding:'9px 13px',border:'1px solid #f8c725',font:'10px DM Mono, monospace',letterSpacing:'.04em',display:'none',maxWidth:'calc(100vw - 28px)',textAlign:'center'});document.body.appendChild(notice);const sync=()=>{if(navigator.onLine){notice.style.display='none';notice.textContent=''}else{notice.textContent='You’re offline — LY10 is using the saved version.';notice.style.display='block'}};addEventListener('online',sync);addEventListener('offline',sync);sync()})();
+// Reliability cleanup: remove the earlier offline service worker/cache layer.
+// Normal browser networking is more dependable on iPhone/iPad for this static site.
+if('serviceWorker' in navigator){addEventListener('load',async()=>{try{const regs=await navigator.serviceWorker.getRegistrations();await Promise.all(regs.map(r=>r.unregister()))}catch{}})}
+if('caches' in window){addEventListener('load',async()=>{try{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('ly10-')).map(k=>caches.delete(k)))}catch{}})}
