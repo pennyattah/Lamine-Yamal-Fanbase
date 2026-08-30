@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30T21:30:00Z",
+  "updated": "2026-08-30T22:46:00Z",
   "reports": [
     {
       "slug": "2026-08-27-barcelona-2-0-athletic",
@@ -13,6 +13,19 @@
       "summary": "Raphinha and Fermín scored as Barcelona won 2–0 at Spotify Camp Nou. Lamine Yamal repeatedly tested Unai Simón, hit the underside of the bar and created danger from the right.",
       "url": "reports/2026-08-27-barcelona-2-0-athletic.html",
       "officialSource": "https://www.fcbarcelona.com/en/news/4567808/fc-barcelona-2-0-athletic-club-first-home-laliga-win-of-season/amp"
+    },
+    {
+      "slug": "2026-08-23-elche-0-5-barcelona",
+      "date": "2026-08-23",
+      "competition": "La Liga",
+      "home": "Elche",
+      "homeScore": 0,
+      "awayScore": 5,
+      "away": "FC Barcelona",
+      "headline": "Elche 0–5 Barça: a five-goal statement",
+      "summary": "Raphinha and Fermín scored twice each and Karim Adeyemi added another in a 5–0 win at Martínez Valero. Barça's official report highlighted Lamine Yamal's speed and his involvement in the move preceding Adeyemi's goal.",
+      "url": "reports/2026-08-23-elche-0-5-barcelona.html",
+      "officialSource": "https://www.fcbarcelona.com/en/news/4565259/elche-0-5-fc-barcelona-statement-of-intent/amp"
     }
   ]
 }
