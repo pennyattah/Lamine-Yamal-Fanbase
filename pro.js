@@ -34,5 +34,8 @@ const newsletterForm=document.querySelector('#newsletter-form');if(newsletterFor
 document.querySelector('#wallpaper-button')?.addEventListener('click',e=>{e.currentTarget.textContent='YOU’RE ON THE LIST ✓'});document.querySelector('#comment-button')?.addEventListener('click',()=>alert('Comments will open when moderation is connected.'));
 const topButton=document.querySelector('.back-top');addEventListener('scroll',()=>topButton?.classList.toggle('show',scrollY>500),{passive:true});topButton?.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
+// Keep Google-facing metadata aligned with the stable Vercel production URL.
+(()=>{const site='https://ly10-fanbase.vercel.app/';const image=site+'ly10.png';const setMeta=(selector,value,attr='content')=>{const el=document.querySelector(selector);if(el)el.setAttribute(attr,value)};setMeta('link[rel="canonical"]',site,'href');setMeta('meta[property="og:url"]',site);setMeta('meta[property="og:image"]',image);setMeta('meta[name="twitter:image"]',image);const ld=document.querySelector('script[type="application/ld+json"]');if(ld){try{const data=JSON.parse(ld.textContent);data.url=site;ld.textContent=JSON.stringify(data)}catch{}}})();
+
 // Remove any old service worker from earlier mobile-reliability experiments.
 if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});if('caches' in window)caches.keys().then(keys=>keys.filter(k=>k.startsWith('ly10-')).forEach(k=>caches.delete(k))).catch(()=>{})}
