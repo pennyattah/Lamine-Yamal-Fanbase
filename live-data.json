@@ -1,26 +1,26 @@
 {
-  "updated": "2026-08-31T00:44:55Z",
-  "source": "FC Barcelona official schedule and match centre; LaLiga official player statistics",
+  "updated": "2026-08-31T01:52:56Z",
+  "source": "FC Barcelona official schedule and match centre; LaLiga official standings and player statistics",
   "last": {
-    "competition": "LA LIGA · MATCHDAY 3",
+    "competition": "LA LIGA · MATCHDAY 1",
     "status": "FULL TIME",
     "home": "BARÇA",
-    "homeScore": 0,
+    "homeScore": 2,
     "awayScore": 0,
-    "away": "RAYO VALLECANO",
-    "summary": "FC Barcelona 0–0 Rayo Vallecano — completed 31 Aug 2026 at Spotify Camp Nou."
+    "away": "ATHLETIC CLUB",
+    "summary": "FC Barcelona 2–0 Athletic Club — completed 27 Aug 2026 at Spotify Camp Nou. Raphinha scored in the 37th minute and Fermín López in the 82nd."
   },
   "next": {
-    "home": "Valencia CF",
-    "away": "FC Barcelona",
-    "opponent": "Valencia CF",
-    "title": "VALENCIA CF VS BARÇA",
-    "meta": "La Liga · 6 Sep 2026 · 16:15 CEST · Mestalla",
-    "kickoff": "2026-09-06T16:15:00+02:00"
+    "home": "FC Barcelona",
+    "away": "Rayo Vallecano",
+    "opponent": "Rayo Vallecano",
+    "title": "BARÇA VS RAYO VALLECANO",
+    "meta": "La Liga · 31 Aug 2026 · 21:30 CEST · Spotify Camp Nou",
+    "kickoff": "2026-08-31T21:30:00+02:00"
   },
   "table": {
-    "position": null,
-    "label": "OFFICIAL TABLE REFRESH PENDING"
+    "position": 1,
+    "label": "1ST · 6 PTS FROM 2 MATCHES"
   },
   "calendars": {
     "2026-09": {
@@ -28,9 +28,9 @@
       "matches": {
         "6": {"title": "VALENCIA CF VS BARÇA", "meta": "La Liga · Away · 16:15 CEST", "venue": "Mestalla", "side": "away"},
         "9": {"title": "BARÇA VS FEYENOORD", "meta": "UEFA Champions League · Home · 18:45 CEST", "venue": "Spotify Camp Nou", "side": "home"},
-        "13": {"title": "LEVANTE VS BARÇA", "meta": "La Liga · Away · 16:15 CEST", "venue": "Ciutat de Valencia", "side": "away"},
-        "16": {"title": "BARÇA VS RACING DE SANTANDER", "meta": "La Liga · Home · 21:30 CEST", "venue": "Spotify Camp Nou", "side": "home"},
-        "19": {"title": "SEVILLA VS BARÇA", "meta": "La Liga · Away · 21:00 CEST", "venue": "Ramón Sánchez-Pizjuán", "side": "away"}
+        "13": {"title": "LEVANTE VS BARÇA", "meta": "La Liga · Away · Time TBA", "venue": "Ciutat de Valencia", "side": "away"},
+        "16": {"title": "BARÇA VS RACING DE SANTANDER", "meta": "La Liga · Home · Time TBA", "venue": "Spotify Camp Nou", "side": "home"},
+        "20": {"title": "SEVILLA VS BARÇA", "meta": "La Liga · Away · Time TBA", "venue": "Ramón Sánchez-Pizjuán", "side": "away"}
       }
     },
     "2026-10": {
