@@ -1,6 +1,19 @@
 {
-  "updated": "2026-08-30T22:46:00Z",
+  "updated": "2026-08-31T00:44:55Z",
   "reports": [
+    {
+      "slug": "2026-08-31-barcelona-0-0-rayo-vallecano",
+      "date": "2026-08-31",
+      "competition": "La Liga",
+      "home": "FC Barcelona",
+      "homeScore": 0,
+      "awayScore": 0,
+      "away": "Rayo Vallecano",
+      "headline": "Barça 0–0 Rayo Vallecano: points shared at Camp Nou",
+      "summary": "FC Barcelona and Rayo Vallecano drew 0–0 at Spotify Camp Nou in La Liga matchday 3. No scorer or Yamal-specific performance claim is added because the official post-match player data has not yet refreshed.",
+      "url": "reports/2026-08-31-barcelona-0-0-rayo-vallecano.html",
+      "officialSource": "https://www.fcbarcelona.com/en/matches/138302/fc-barcelona-rayo-vallecano-la-liga-2026-2027"
+    },
     {
       "slug": "2026-08-27-barcelona-2-0-athletic",
       "date": "2026-08-27",
