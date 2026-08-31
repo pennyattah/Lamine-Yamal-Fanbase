@@ -1,26 +1,26 @@
 {
-  "updated": "2026-08-31T11:53:39Z",
-  "source": "FC Barcelona official schedule and match centre; LaLiga official standings and player statistics",
+  "updated": "2026-08-31T21:33:00Z",
+  "source": "LY10 live match desk; current score cross-checked against live match services; fixtures from FC Barcelona official schedule",
   "last": {
-    "competition": "LA LIGA · MATCHDAY 1",
-    "status": "FULL TIME",
+    "competition": "LA LIGA · MATCHDAY 3",
+    "status": "LIVE",
     "home": "BARÇA",
-    "homeScore": 2,
-    "awayScore": 0,
-    "away": "ATHLETIC CLUB",
-    "summary": "FC Barcelona 2–0 Athletic Club — completed 27 Aug 2026 at Spotify Camp Nou. Raphinha scored in the 37th minute and Fermín López in the 82nd."
+    "homeScore": 3,
+    "awayScore": 1,
+    "away": "RAYO VALLECANO",
+    "summary": "FC Barcelona 3–1 Rayo Vallecano — live at Spotify Camp Nou. Raphinha and Lamine Yamal scored in the first half; live score refreshed by the LY10 match desk."
   },
   "next": {
-    "home": "FC Barcelona",
-    "away": "Rayo Vallecano",
-    "opponent": "Rayo Vallecano",
-    "title": "BARÇA VS RAYO VALLECANO",
-    "meta": "La Liga · 31 Aug 2026 · 21:30 CEST · Spotify Camp Nou",
-    "kickoff": "2026-08-31T21:30:00+02:00"
+    "home": "Valencia CF",
+    "away": "FC Barcelona",
+    "opponent": "Valencia CF",
+    "title": "VALENCIA CF VS BARÇA",
+    "meta": "La Liga · 6 Sep 2026 · 16:15 CEST · Mestalla",
+    "kickoff": "2026-09-06T16:15:00+02:00"
   },
   "table": {
     "position": 4,
-    "label": "4TH · 6 PTS FROM 2 MATCHES"
+    "label": "LIVE TABLE · POSITION UPDATES AFTER MATCH"
   },
   "calendars": {
     "2026-09": {
