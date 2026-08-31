@@ -80,6 +80,7 @@
     let desk=FALLBACK;
     const stamp=Date.now();
     const sources=[
+      `/api/live-data?v=${stamp}`,
       `https://raw.githubusercontent.com/pennyattah/Lamine-Yamal-Fanbase/main/live-data.json?v=${stamp}`,
       `./live-data.json?v=${stamp}`
     ];
@@ -90,6 +91,10 @@
       }catch{}
     }
     applyMatchDesk(desk);applyCountdown(desk.next);applyCalendar(desk.calendars||FALLBACK.calendars);
+    const kickoff=desk.next?.kickoff?new Date(desk.next.kickoff).getTime():NaN;
+    const nearMatch=Number.isFinite(kickoff)&&Date.now()>=kickoff-30*60*1000&&Date.now()<=kickoff+3*60*60*1000;
+    clearTimeout(window.__ly10LivePoll);
+    if(nearMatch||['LIVE','HALF TIME'].includes(desk.last?.status))window.__ly10LivePoll=setTimeout(loadLive,60000);
   };
   loadLive();
 
