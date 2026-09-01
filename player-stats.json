@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-01T00:58:00Z",
+  "updated": "2026-09-01T10:05:00Z",
   "season": "2026/27",
   "player": "Lamine Yamal",
   "shirt": 10,
@@ -7,10 +7,10 @@
   "league": {
     "matches": 3,
     "starts": 3,
-    "minutes": 244,
+    "minutes": 245,
     "goals": 2,
     "assists": 0,
-    "shots": 15,
+    "shots": 10,
     "yellowCards": 0,
     "redCards": 0
   },
@@ -29,7 +29,7 @@
     "contract": "FC Barcelona through 30 June 2031"
   },
   "sources": [
-    {"label":"LaLiga official player statistics","url":"https://www.laliga.com/en-NG/player/lamine-yamal"},
+    {"label":"LaLiga official player statistics","url":"https://www.laliga.com/en-NL/player/lamine-yamal"},
     {"label":"FC Barcelona official report — Yamal reaches 50 Barça goals vs Rayo","url":"https://www.fcbarcelona.com/en/football/first-team/news/4569759/lamine-yamal-reaches-50-goals-for-fc-barcelona-with-a-work-of-art"},
     {"label":"StatMuse current 2026/27 LaLiga match log","url":"https://www.statmuse.com/fc/ask/lamine-yamal-la-liga-goals-this-season"}
   ]
