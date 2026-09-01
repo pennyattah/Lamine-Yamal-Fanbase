@@ -1,22 +1,22 @@
 {
-  "updated": "2026-08-31T22:47:00Z",
-  "source": "LY10 match desk · final score verified against LaLiga match centre · fixtures from FC Barcelona schedule",
+  "updated": "2026-09-01T00:45:40.148Z",
+  "source": "LY10 automated match desk · ESPN/Sofascore score/status · FC Barcelona fixture schedule",
   "last": {
-    "competition": "LA LIGA · MATCHDAY 3",
+    "competition": "LA LIGA",
     "status": "FULL TIME",
     "home": "BARÇA",
     "homeScore": 5,
     "awayScore": 2,
     "away": "RAYO VALLECANO",
-    "kickoff": "2026-08-31T21:30:00+02:00",
-    "summary": "FC Barcelona 5–2 Rayo Vallecano — full time at Spotify Camp Nou. Raphinha scored twice, Lamine Yamal scored twice, and Barcelona completed the comeback after Rayo opened the scoring."
+    "kickoff": "2026-08-31T19:30Z",
+    "summary": "Barcelona 5–2 Rayo Vallecano — full time."
   },
   "next": {
-    "home": "Valencia CF",
+    "home": "VALENCIA",
     "away": "FC Barcelona",
-    "opponent": "Valencia CF",
+    "opponent": "VALENCIA",
     "title": "VALENCIA CF VS BARÇA",
-    "meta": "La Liga · 6 Sep 2026 · 16:15 CEST · Mestalla",
+    "meta": "La Liga · Away · 16:15 CEST · Mestalla",
     "kickoff": "2026-09-06T16:15:00+02:00"
   },
   "table": {
@@ -27,21 +27,71 @@
     "2026-09": {
       "label": "SEPTEMBER",
       "matches": {
-        "6": {"title": "VALENCIA CF VS BARÇA", "meta": "La Liga · Away · 16:15 CEST", "venue": "Mestalla", "side": "away"},
-        "9": {"title": "BARÇA VS FEYENOORD", "meta": "UEFA Champions League · Home · 18:45 CEST", "venue": "Spotify Camp Nou", "side": "home"},
-        "13": {"title": "LEVANTE VS BARÇA", "meta": "La Liga · Away · 16:15 CEST", "venue": "Ciutat de Valencia", "side": "away"},
-        "16": {"title": "BARÇA VS RACING DE SANTANDER", "meta": "La Liga · Home · 21:30 CEST", "venue": "Spotify Camp Nou", "side": "home"},
-        "19": {"title": "SEVILLA VS BARÇA", "meta": "La Liga · Away · 21:00 CEST", "venue": "Ramón Sánchez-Pizjuán", "side": "away"}
+        "6": {
+          "title": "VALENCIA CF VS BARÇA",
+          "meta": "La Liga · Away · 16:15 CEST",
+          "venue": "Mestalla",
+          "side": "away"
+        },
+        "9": {
+          "title": "BARÇA VS FEYENOORD",
+          "meta": "UEFA Champions League · Home · 18:45 CEST",
+          "venue": "Spotify Camp Nou",
+          "side": "home"
+        },
+        "13": {
+          "title": "LEVANTE VS BARÇA",
+          "meta": "La Liga · Away · 16:15 CEST",
+          "venue": "Ciutat de Valencia",
+          "side": "away"
+        },
+        "16": {
+          "title": "BARÇA VS RACING DE SANTANDER",
+          "meta": "La Liga · Home · 21:30 CEST",
+          "venue": "Spotify Camp Nou",
+          "side": "home"
+        },
+        "19": {
+          "title": "SEVILLA VS BARÇA",
+          "meta": "La Liga · Away · 21:00 CEST",
+          "venue": "Ramón Sánchez-Pizjuán",
+          "side": "away"
+        }
       }
     },
     "2026-10": {
       "label": "OCTOBER",
       "matches": {
-        "11": {"title": "BARÇA VS GETAFE", "meta": "La Liga · Home · Time TBA", "venue": "Spotify Camp Nou", "side": "home"},
-        "13": {"title": "GALATASARAY VS BARÇA", "meta": "UEFA Champions League · Away · 21:00 CEST", "venue": "RAMS Park", "side": "away"},
-        "18": {"title": "REAL BETIS VS BARÇA", "meta": "La Liga · Away · Time TBA", "venue": "Estadio La Cartuja de Sevilla", "side": "away"},
-        "20": {"title": "PARIS SAINT-GERMAIN VS BARÇA", "meta": "UEFA Champions League · Away · 21:00 CEST", "venue": "Parc des Princes", "side": "away"},
-        "25": {"title": "BARÇA VS REAL MADRID", "meta": "La Liga · Home · Time TBA", "venue": "Spotify Camp Nou", "side": "home"}
+        "11": {
+          "title": "BARÇA VS GETAFE",
+          "meta": "La Liga · Home · Time TBA",
+          "venue": "Spotify Camp Nou",
+          "side": "home"
+        },
+        "13": {
+          "title": "GALATASARAY VS BARÇA",
+          "meta": "UEFA Champions League · Away · 21:00 CEST",
+          "venue": "RAMS Park",
+          "side": "away"
+        },
+        "18": {
+          "title": "REAL BETIS VS BARÇA",
+          "meta": "La Liga · Away · Time TBA",
+          "venue": "Estadio La Cartuja de Sevilla",
+          "side": "away"
+        },
+        "20": {
+          "title": "PARIS SAINT-GERMAIN VS BARÇA",
+          "meta": "UEFA Champions League · Away · 21:00 CEST",
+          "venue": "Parc des Princes",
+          "side": "away"
+        },
+        "25": {
+          "title": "BARÇA VS REAL MADRID",
+          "meta": "La Liga · Home · Time TBA",
+          "venue": "Spotify Camp Nou",
+          "side": "home"
+        }
       }
     }
   }
