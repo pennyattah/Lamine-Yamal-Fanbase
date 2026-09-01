@@ -1,6 +1,19 @@
 {
-  "updated": "2026-08-31T01:52:56Z",
+  "updated": "2026-09-01T13:40:00Z",
   "reports": [
+    {
+      "slug": "2026-08-31-barcelona-5-2-rayo-vallecano",
+      "date": "2026-08-31",
+      "competition": "La Liga",
+      "home": "FC Barcelona",
+      "homeScore": 5,
+      "awayScore": 2,
+      "away": "Rayo Vallecano",
+      "headline": "Barça 5–2 Rayo: Yamal hits 50 and then 51",
+      "summary": "Barcelona came from behind to make it three league wins from three. Raphinha and Lamine Yamal scored twice each, with Yamal's first strike marking his 50th first-team goal for Barça.",
+      "url": "reports/2026-08-31-barcelona-5-2-rayo-vallecano.html",
+      "officialSource": "https://www.fcbarcelona.com/en/football/first-team/news/4569755/fc-barcelona-52-rayo-vallecano-three-from-three"
+    },
     {
       "slug": "2026-08-27-barcelona-2-0-athletic",
       "date": "2026-08-27",
