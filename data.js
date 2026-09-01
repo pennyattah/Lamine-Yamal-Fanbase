@@ -1,7 +1,7 @@
 window.LY10_DATA={
-  version:'1.4.6',
-  fixture:{opponent:'Rayo Vallecano',competition:'La Liga',home:'FC Barcelona',date:'2026-08-31T21:30:00+02:00'},
-  stats:[['GOALS',0,'2026/27 La Liga','Official league total.'],['ASSISTS',0,'2026/27 La Liga','Official league total.'],['MATCHES',2,'2026/27 La Liga','League appearances.'],['MINUTES',155,'2026/27 La Liga','League minutes played.']],
+  version:'1.4.7',
+  fixture:{opponent:'Valencia CF',competition:'La Liga',home:'Valencia CF',date:'2026-09-06T16:15:00+02:00'},
+  stats:[['GOALS',2,'2026/27 La Liga','Official league total.'],['ASSISTS',0,'2026/27 La Liga','Official league total.'],['MATCHES',3,'2026/27 La Liga','League appearances.'],['MINUTES',245,'2026/27 La Liga','League minutes played.']],
   poll:{id:'best-weapon',question:'WHAT IS HIS BEST WEAPON?',options:['Dribbling','Vision','Finishing','Composure']},
   quiz:[{q:'At what age did Lamine make his Barcelona first-team debut?',answers:['14','15','16'],correct:1},{q:'Which position is most associated with Lamine?',answers:['Right wing','Centre-back','Goalkeeper'],correct:0},{q:'Which academy helped shape his game?',answers:['La Masia','Ajax Academy','Cobham'],correct:0},{q:'Which country does he represent internationally?',answers:['Spain','Morocco','Equatorial Guinea'],correct:0}],
   facts:['Lamine joined FC Barcelona at the age of seven.','His first club was CF La Torreta.','He became the youngest scorer in UEFA EURO history in 2024.','In 2026 he became the youngest player to win both the European Championship and the World Cup.'],
