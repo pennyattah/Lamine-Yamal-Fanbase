@@ -1,15 +1,15 @@
 {
-  "updated": "2026-09-06T15:57:13.289Z",
+  "updated": "2026-09-06T17:58:46.012Z",
   "source": "LY10 automated match desk · ESPN/Sofascore score/status · FC Barcelona fixture schedule",
   "last": {
     "competition": "LA LIGA",
-    "status": "LIVE",
+    "status": "FULL TIME",
     "home": "VALENCIA",
     "homeScore": 0,
-    "awayScore": 3,
+    "awayScore": 5,
     "away": "BARÇA",
     "kickoff": "2026-09-06T14:15Z",
-    "summary": "Valencia 0–3 Barcelona — live."
+    "summary": "Valencia 0–5 Barcelona — full time."
   },
   "next": {
     "home": "FC Barcelona",
