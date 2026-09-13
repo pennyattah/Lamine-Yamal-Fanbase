@@ -1,23 +1,23 @@
 {
-  "updated": "2026-09-07T23:00:58.222Z",
+  "updated": "2026-09-13T17:06:09.772Z",
   "source": "LY10 automated match desk · ESPN/Sofascore score/status · FC Barcelona fixture schedule",
   "last": {
     "competition": "LA LIGA",
     "status": "FULL TIME",
-    "home": "VALENCIA",
-    "homeScore": 0,
-    "awayScore": 5,
+    "home": "LEVANTE",
+    "homeScore": 2,
+    "awayScore": 4,
     "away": "BARÇA",
-    "kickoff": "2026-09-06T14:15Z",
-    "summary": "Valencia 0–5 Barcelona — full time."
+    "kickoff": "2026-09-13T14:15Z",
+    "summary": "Levante 2–4 Barcelona — full time."
   },
   "next": {
     "home": "FC Barcelona",
-    "away": "FEYENOORD",
-    "opponent": "FEYENOORD",
-    "title": "BARÇA VS FEYENOORD",
-    "meta": "UEFA Champions League · Home · 18:45 CEST · Spotify Camp Nou",
-    "kickoff": "2026-09-09T18:45:00+02:00"
+    "away": "RACING DE SANTANDER",
+    "opponent": "RACING DE SANTANDER",
+    "title": "BARÇA VS RACING DE SANTANDER",
+    "meta": "La Liga · Home · 21:30 CEST · Spotify Camp Nou",
+    "kickoff": "2026-09-16T21:30:00+02:00"
   },
   "table": {
     "position": 1,
