@@ -1,15 +1,15 @@
 {
-  "updated": "2026-09-16T19:41:53.672Z",
+  "updated": "2026-09-16T22:19:15.222Z",
   "source": "LY10 automated match desk · ESPN/Sofascore score/status · FC Barcelona fixture schedule",
   "last": {
     "competition": "LA LIGA",
-    "status": "LIVE",
+    "status": "FULL TIME",
     "home": "BARÇA",
-    "homeScore": 0,
-    "awayScore": 0,
+    "homeScore": 7,
+    "awayScore": 2,
     "away": "RACING SANTANDER",
     "kickoff": "2026-09-16T19:30Z",
-    "summary": "Barcelona 0–0 Racing Santander — live."
+    "summary": "Barcelona 7–2 Racing Santander — full time."
   },
   "next": {
     "home": "SEVILLA",
