@@ -1,23 +1,23 @@
 {
-  "updated": "2026-09-17T23:41:46.964Z",
+  "updated": "2026-09-19T21:07:20.457Z",
   "source": "LY10 automated match desk · ESPN/Sofascore score/status · FC Barcelona fixture schedule",
   "last": {
     "competition": "LA LIGA",
     "status": "FULL TIME",
-    "home": "BARÇA",
-    "homeScore": 7,
-    "awayScore": 2,
-    "away": "RACING SANTANDER",
-    "kickoff": "2026-09-16T19:30Z",
-    "summary": "Barcelona 7–2 Racing Santander — full time."
+    "home": "SEVILLA",
+    "homeScore": 1,
+    "awayScore": 3,
+    "away": "BARÇA",
+    "kickoff": "2026-09-19T19:00Z",
+    "summary": "Sevilla 1–3 Barcelona — full time."
   },
   "next": {
-    "home": "SEVILLA",
-    "away": "FC Barcelona",
-    "opponent": "SEVILLA",
-    "title": "SEVILLA VS BARÇA",
-    "meta": "La Liga · Away · 21:00 CEST · Ramón Sánchez-Pizjuán",
-    "kickoff": "2026-09-19T21:00:00+02:00"
+    "home": "FC Barcelona",
+    "away": "GETAFE",
+    "opponent": "GETAFE",
+    "title": "BARÇA VS GETAFE",
+    "meta": "La Liga · Home · Time TBA · Spotify Camp Nou",
+    "kickoff": "2026-10-11T23:59:00+02:00"
   },
   "table": {
     "position": 1,
