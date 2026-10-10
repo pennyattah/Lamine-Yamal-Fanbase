@@ -1,15 +1,15 @@
 {
-  "updated": "2026-09-20T23:29:04.799Z",
+  "updated": "2026-10-10T19:14:01.935Z",
   "source": "LY10 automated match desk · ESPN/Sofascore score/status · FC Barcelona fixture schedule",
   "last": {
     "competition": "LA LIGA",
     "status": "FULL TIME",
-    "home": "SEVILLA",
-    "homeScore": 1,
-    "awayScore": 3,
-    "away": "BARÇA",
-    "kickoff": "2026-09-19T19:00Z",
-    "summary": "Sevilla 1–3 Barcelona — full time."
+    "home": "BARÇA",
+    "homeScore": 3,
+    "awayScore": 0,
+    "away": "GETAFE",
+    "kickoff": "2026-10-10T16:30Z",
+    "summary": "Barcelona 3–0 Getafe — full time."
   },
   "next": {
     "home": "FC Barcelona",
