@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-11T22:26:58.949Z",
+  "updated": "2026-10-17T18:35:23.296Z",
   "source": "LY10 automated match desk · ESPN/Sofascore score/status · FC Barcelona fixture schedule",
   "last": {
     "competition": "LA LIGA",
     "status": "FULL TIME",
-    "home": "BARÇA",
-    "homeScore": 3,
-    "awayScore": 0,
-    "away": "GETAFE",
-    "kickoff": "2026-10-10T16:30Z",
-    "summary": "Barcelona 3–0 Getafe — full time."
+    "home": "REAL BETIS",
+    "homeScore": 2,
+    "awayScore": 5,
+    "away": "BARÇA",
+    "kickoff": "2026-10-17T16:30Z",
+    "summary": "Real Betis 2–5 Barcelona — full time."
   },
   "next": {
-    "home": "FC Barcelona",
-    "away": "GETAFE",
-    "opponent": "GETAFE",
-    "title": "BARÇA VS GETAFE",
-    "meta": "La Liga · Home · Time TBA · Spotify Camp Nou",
-    "kickoff": "2026-10-11T23:59:00+02:00"
+    "home": "REAL BETIS",
+    "away": "FC Barcelona",
+    "opponent": "REAL BETIS",
+    "title": "REAL BETIS VS BARÇA",
+    "meta": "La Liga · Away · Time TBA · Estadio La Cartuja de Sevilla",
+    "kickoff": "2026-10-18T23:59:00+02:00"
   },
   "table": {
     "position": 1,
