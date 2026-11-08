@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-01T23:50:58.305Z",
+  "updated": "2026-11-08T22:52:48.382Z",
   "source": "LY10 automated match desk · ESPN/Sofascore score/status · FC Barcelona fixture schedule",
   "last": {
     "competition": "LA LIGA",
     "status": "FULL TIME",
-    "home": "BARÇA",
-    "homeScore": 6,
-    "awayScore": 1,
-    "away": "ALAVÉS",
-    "kickoff": "2026-10-31T20:00Z",
-    "summary": "Barcelona 6–1 Alavés — full time."
+    "home": "ATLÉTICO MADRID",
+    "homeScore": 1,
+    "awayScore": 2,
+    "away": "BARÇA",
+    "kickoff": "2026-11-08T20:00Z",
+    "summary": "Atlético Madrid 1–2 Barcelona — full time."
   },
   "next": {
     "home": "REAL BETIS",
